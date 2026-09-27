@@ -19,7 +19,7 @@ namespace ChatApp.Api.Controllers
         [HttpGet("GetUser")]
         public async Task<IActionResult> Get()
         {
-            GetUserInfoQuary query = new GetUserInfoQuary { UserId =1 };
+            GetUserInfoQuary query = new GetUserInfoQuary { UserId =2 };
             var result = await _mediator.Send(query);
             return Ok(result);
 
