@@ -1,4 +1,5 @@
 using ChatApp.Application.shared;
+using ChatApp.Persistance.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,9 @@ builder.Services.AddControllers();
 
 // register application service 
 ApplicationServiceRegisteration.ConfigureApplicationService(builder.Services);
+// registe Persistance
+PersistanceServiceRegisteration.ConfigureServicePersistance(builder.Services);
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
