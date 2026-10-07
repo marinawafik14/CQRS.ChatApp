@@ -23,8 +23,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Message\Handler\" />
+    <Folder Include="Features\Message\Request\Command\" />
+    <Folder Include="Features\Message\Request\Query\" />
     <Folder Include="Features\Users\Handler\Command\" />
-    <Folder Include="Features\Users\Request\Command\" />
   </ItemGroup>
 
 </Project>
