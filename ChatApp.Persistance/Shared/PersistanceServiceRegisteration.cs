@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Identity;
 using ChatApp.Persistance.DbContext;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using ChatApp.Application.Interfaces;
+using ChatApp.Persistance.Repositories.Services;
+using ChatApp.Persistance.Repositories;
 namespace ChatApp.Persistance.Shared
 {
     public static class PersistanceServiceRegisteration
@@ -29,6 +32,9 @@ namespace ChatApp.Persistance.Shared
 
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            service.AddScoped<IFileService, FileService>();
+            service.AddScoped(serviceType: typeof(IGenericRepository<>), implementationType: typeof(GenericRepository<>));
         }
 
     }
