@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ChatApp.Domain.Entities
 {
-    public class Users : IdentityUser<int>
+    public class User : IdentityUser<int>
     {
         public string ImageUrl { get; set; }= string.Empty;
         public string? Bio {  get; set; } = string.Empty;

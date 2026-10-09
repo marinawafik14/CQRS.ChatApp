@@ -1,10 +1,10 @@
-﻿using ChatApp.Application.Features.Users.Request.Query;
+﻿using ChatApp.Application.Features.User.Request.Query;
 using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ChatApp.Application.Features.Users.Handler.Query
+namespace ChatApp.Application.Features.User.Handler.Query
 {
     public class GetUserInfoQuaryHandler : IRequestHandler<GetUserInfoQuary, List<string>>
     {

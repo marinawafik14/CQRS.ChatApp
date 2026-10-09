@@ -12,11 +12,11 @@ namespace ChatApp.Domain.Entities
         public int BlockerId { get; set; }
 
         [ForeignKey("BlockerId")]
-        public virtual  Users Blocker { get; set; }
+        public virtual  User Blocker { get; set; }
         public int BlockedId { get; set; }
 
         [ForeignKey("BlockedId")]
-        public virtual Users? Blocked { get; set; }
+        public virtual User? Blocked { get; set; }
 
 
      

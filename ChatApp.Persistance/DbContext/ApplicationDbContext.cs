@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 namespace ChatApp.Persistance.DbContext
 {
     public class ApplicationDbContext : IdentityDbContext<
-     Users,
+     User,
      IdentityRole<int>,
      int,
      IdentityUserClaim<int>,

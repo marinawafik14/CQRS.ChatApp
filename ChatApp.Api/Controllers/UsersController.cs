@@ -1,4 +1,4 @@
-﻿using ChatApp.Application.Features.Users.Request.Query;
+﻿using ChatApp.Application.Features.User.Request.Query;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

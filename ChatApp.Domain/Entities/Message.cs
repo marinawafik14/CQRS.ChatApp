@@ -10,10 +10,10 @@ namespace ChatApp.Domain.Entities
     {
         public int SenderId { get; set; }
         [ForeignKey("SenderId")]
-        public virtual Users Sender { get; set; }
+        public virtual User Sender { get; set; }
         public int ReceiverId { get; set; }
         [ForeignKey("ReceiverId")]
-        public virtual Users Receiver { get; set; }
+        public virtual User Receiver { get; set; }
         public string Content { get; set; } = string.Empty;
         public DateTime SentAt { get; set; } = DateTime.UtcNow;
         public bool IsRead { get; set; } = false;
