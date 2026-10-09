@@ -24,7 +24,7 @@ namespace ChatApp.Persistance.Shared
 
 
 
-            service.AddIdentity<Users, IdentityRole<int>>(opt =>
+            service.AddIdentity<User, IdentityRole<int>>(opt =>
             {
                 opt.Password.RequireLowercase = true;
                 opt.SignIn.RequireConfirmedEmail = false;

@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using ChatApp.Application.mapping;
+using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.ClientModel.Primitives;
 using System.Collections.Generic;
 using System.Text;
 namespace ChatApp.Application.shared
@@ -11,6 +13,10 @@ namespace ChatApp.Application.shared
         {
             services.AddMediatR(cfg =>
                 cfg.RegisterServicesFromAssembly(typeof(ApplicationServiceRegisteration).Assembly));
+
+            services.AddAutoMapper( cfg => { }, typeof(UserMapping).Assembly);
+
+
         }
     }
 }
