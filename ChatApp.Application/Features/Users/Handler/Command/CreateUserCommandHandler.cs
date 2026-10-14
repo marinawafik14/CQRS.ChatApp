@@ -8,16 +8,19 @@ using System.Text;
 using ChatApp.Domain.Entities;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using ChatApp.Application.Interfaces;
 namespace ChatApp.Application.Features.User.Handler.Command
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommandRequest, BaseCommonResponse>
     {
         private readonly IMapper _mapper;
         private readonly UserManager<ChatApp.Domain.Entities.User> _userManager;
-        public CreateUserCommandHandler(IMapper mapper, UserManager<ChatApp.Domain.Entities.User> userManager)
+        private readonly IFileService _fileService;
+        public CreateUserCommandHandler(IMapper mapper, UserManager<ChatApp.Domain.Entities.User> userManager, IFileService fileService)
         {
             this._mapper = mapper;
             this._userManager = userManager;
+            this._fileService = fileService;
         }
         public async Task<BaseCommonResponse> Handle(CreateUserCommandRequest request, CancellationToken cancellationToken)
         {
@@ -33,6 +36,7 @@ namespace ChatApp.Application.Features.User.Handler.Command
                 response.Errors = resultValidation.Errors.Select(e => e.ErrorMessage).ToList();
             }
            var userEntity = _mapper.Map<ChatApp.Domain.Entities.User>(request.createUserDto);
+            userEntity.ImageUrl = await _fileService.SaveImageAsync(request.createUserDto.Image, userEntity.Email);
           var createUserResult = await _userManager.CreateAsync(userEntity, request.createUserDto.Password);
             if (!createUserResult.Succeeded)
             {

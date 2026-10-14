@@ -1,4 +1,6 @@
 ﻿using ChatApp.Application.mapping;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.ClientModel.Primitives;
@@ -14,8 +16,9 @@ namespace ChatApp.Application.shared
             services.AddMediatR(cfg =>
                 cfg.RegisterServicesFromAssembly(typeof(ApplicationServiceRegisteration).Assembly));
 
-            services.AddAutoMapper( cfg => { }, typeof(UserMapping).Assembly);
-
+           services.AddAutoMapper( cfg => { }, typeof(UserMapping).Assembly);
+           services.AddValidatorsFromAssembly(typeof(ApplicationServiceRegisteration).Assembly);
+           services.AddFluentValidationAutoValidation();
 
         }
     }
