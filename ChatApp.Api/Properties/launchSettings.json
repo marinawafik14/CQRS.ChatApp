@@ -8,7 +8,10 @@
       "launchUrl": "swagger",
       "applicationUrl": "http://localhost:5088",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "SecretKey": "hgfd765%$#234jhgfgvfc %^&*kjhgfd8765432",
+        "Issuer": "https://localhost:7216",
+        "AUDIENCE": ""
       }
     },
     "https": {
@@ -18,7 +21,10 @@
       "launchUrl": "swagger",
       "applicationUrl": "https://localhost:7216;http://localhost:5088",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "SecretKey": "hgfd765%$#234jhgfgvfc %^&*kjhgfd8765432",
+        "Issuer": "https://localhost:7216",
+        "AUDIENCE": ""
       }
     }
   }

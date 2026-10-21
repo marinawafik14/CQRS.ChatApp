@@ -8,6 +8,6 @@ namespace ChatApp.Application.Interfaces
     public interface IUserRepository : IGenericRepository<User>
     {
 
-
+        public  Task CreateToken(User user);
     }
 }
