@@ -12,6 +12,7 @@ namespace ChatApp.Application.mapping
         public UserMapping()
         {
             CreateMap<User, CreateUserDto>().ReverseMap();
+            CreateMap<User, UserInfoDto>().ReverseMap();
         }
 
     }

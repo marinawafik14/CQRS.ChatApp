@@ -35,6 +35,8 @@ namespace ChatApp.Persistance.Shared
 
             service.AddScoped<IFileService, FileService>();
             service.AddScoped(serviceType: typeof(IGenericRepository<>), implementationType: typeof(GenericRepository<>));
+
+            service.AddScoped<IUserRepository, UserRepository>();
         }
 
     }

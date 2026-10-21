@@ -1,4 +1,7 @@
-﻿using ChatApp.Application.Features.User.Request.Query;
+﻿using AutoMapper;
+using ChatApp.Application.Dtos.Users;
+using ChatApp.Application.Features.User.Request.Query;
+using ChatApp.Application.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -6,22 +9,21 @@ using System.Text;
 
 namespace ChatApp.Application.Features.User.Handler.Query
 {
-    public class GetUserInfoQuaryHandler : IRequestHandler<GetUserInfoQuary, List<string>>
+    public class GetUserInfoQuaryHandler : IRequestHandler<GetUserInfoQuary, UserInfoDto>
     {
-        private static readonly Dictionary<int, List<string>> FakeUserDb = new Dictionary<int, List<string>>()
-       {
-           {1, new List<string>() {"ahmed", "cairo"} },
-           {2, new List<string>() {"ali", "mansoura"} }
-       };
+        private readonly IMapper _mapper;
+        private readonly IUserRepository _userRepository;
 
-        async Task<List<string>> IRequestHandler<GetUserInfoQuary, List<string>>.Handle(GetUserInfoQuary request, CancellationToken cancellationToken)
+        public GetUserInfoQuaryHandler(IMapper mapper , IUserRepository userRepository)
         {
-            if (FakeUserDb.TryGetValue(request.UserId ,out List<string>? value))
-            {
-                return await Task.FromResult(value);
-            }
+            this._mapper = mapper;
+            this._userRepository = userRepository;
+        }
 
-            return new List<string> { "user not found" };
+       public async Task <UserInfoDto> Handle(GetUserInfoQuary request, CancellationToken cancellationToken)
+        {
+            var user = await _userRepository.GetById(request.UserId);
+            return _mapper.Map<UserInfoDto>(user); 
         }
     }
 }
